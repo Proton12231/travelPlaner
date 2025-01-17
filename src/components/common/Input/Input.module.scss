@@ -1,0 +1,56 @@
+@import "../../../styles/variables.scss";
+
+.wrapper {
+  width: 100%;
+
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: $neutral-600;
+    font-weight: 500;
+  }
+
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .prefix {
+      position: absolute;
+      left: 0.875rem;
+      color: $neutral-500;
+      font-size: 0.875rem;
+      font-weight: 500;
+      user-select: none;
+    }
+
+    .input {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 2px solid $neutral-200;
+      border-radius: $radius;
+      font-size: 0.875rem;
+      color: $neutral-900;
+      transition: $transition;
+
+      &.withPrefix {
+        padding-left: 2.5rem;
+      }
+
+      &:hover {
+        border-color: $neutral-300;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.2);
+      }
+
+      &::placeholder {
+        color: $neutral-500;
+      }
+    }
+  }
+}

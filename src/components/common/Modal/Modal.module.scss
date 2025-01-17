@@ -1,0 +1,122 @@
+@import "../../../styles/variables.scss";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($neutral-900, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.modal {
+  background: white;
+  border-radius: $radius-lg;
+  max-height: calc(100vh - 4rem);
+  width: 100%;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, $primary-dark, $primary);
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: $neutral-100;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $neutral-900;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      &::before {
+        content: "";
+        width: 4px;
+        height: 1.25rem;
+        background: linear-gradient(to bottom, $primary-dark, $primary);
+        border-radius: $radius-sm;
+      }
+    }
+
+    .closeButton {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: $neutral-500;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: $radius;
+      transition: $transition;
+
+      &:hover {
+        background-color: $neutral-200;
+        color: $neutral-700;
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $neutral-100;
+      border-radius: $radius;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $neutral-300;
+      border-radius: $radius;
+
+      &:hover {
+        background: $neutral-400;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

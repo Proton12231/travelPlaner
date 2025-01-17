@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, $neutral-900, $neutral-800);
+
+  // 主要内容区域样式
+  .main {
+    flex: 1;
+    padding: 2rem;
+    background: linear-gradient(135deg, $neutral-900, $neutral-800);
+  }
+}

@@ -1,0 +1,207 @@
+@import "../../../styles/variables.scss";
+
+.template {
+  width: 800px;
+  background: white;
+  padding: 2rem;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $neutral-200;
+
+    .logo {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: $neutral-900;
+      margin-bottom: 1rem;
+    }
+
+    .info {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      color: $neutral-600;
+    }
+  }
+
+  .timeline {
+    padding: 0 2rem;
+
+    .segment {
+      display: flex;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-left: 2px solid $primary;
+
+      &:last-child {
+        border-left-style: dashed;
+      }
+
+      .timeColumn {
+        flex-shrink: 0;
+        width: 120px;
+        position: relative;
+
+        .time {
+          position: relative;
+          padding-left: 1.5rem;
+
+          .point {
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: $primary;
+            border: 2px solid white;
+          }
+
+          .hour {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $neutral-900;
+          }
+
+          .date {
+            font-size: 0.875rem;
+            color: $neutral-500;
+          }
+        }
+
+        .duration {
+          margin: 0.5rem 0;
+          padding: 0.25rem 0.5rem;
+          background: rgba($primary, 0.1);
+          color: $primary;
+          border-radius: $radius;
+          font-size: 0.875rem;
+          text-align: center;
+        }
+      }
+
+      .content {
+        flex: 1;
+        background: $neutral-50;
+        border-radius: $radius-lg;
+        padding: 1.5rem;
+
+        .route {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+
+          .city {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $neutral-900;
+          }
+
+          .transit {
+            flex: 1;
+            text-align: center;
+            font-size: 0.875rem;
+            color: $primary;
+            padding: 0.5rem;
+            background: rgba($primary, 0.1);
+            border-radius: $radius;
+
+            .transitTime {
+              display: block;
+              font-size: 0.75rem;
+              margin-top: 0.25rem;
+              color: $neutral-600;
+            }
+          }
+        }
+
+        .details {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 1rem;
+          border-top: 1px dashed $neutral-300;
+
+          .transport {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: $primary;
+            font-weight: 500;
+
+            i {
+              font-size: 1.25rem;
+            }
+          }
+
+          .price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+            color: $error;
+
+            .hotel {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              color: $neutral-600;
+              font-size: 0.875rem;
+
+              .hotelPrice {
+                color: $warning;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid $neutral-200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .qrCode {
+      text-align: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        display: block;
+        font-size: 0.875rem;
+        color: $neutral-600;
+      }
+    }
+
+    .copyright {
+      text-align: right;
+      color: $neutral-500;
+      font-size: 0.875rem;
+
+      p {
+        margin: 0.25rem 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,246 @@
+@import "../../../styles/variables.scss";
+
+.wrapper {
+  position: relative;
+  width: 100%;
+
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: $neutral-600;
+    font-weight: 500;
+  }
+
+  .selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 0.875rem;
+    border: 2px solid $neutral-200;
+    border-radius: $radius;
+    background-color: white;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      border-color: $neutral-300;
+    }
+
+    &.active {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
+    }
+
+    .value {
+      color: $neutral-900;
+      font-size: 0.875rem;
+
+      &:empty::before {
+        content: attr(placeholder);
+        color: $neutral-500;
+      }
+    }
+
+    i {
+      color: $neutral-500;
+      font-size: 1.25rem;
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: $radius;
+    box-shadow: $shadow-lg;
+    z-index: 1000;
+    animation: slideDown 0.2s ease;
+    padding: 1rem;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      button {
+        background: none;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        color: $neutral-500;
+        border-radius: $radius;
+        transition: $transition;
+
+        &:hover {
+          background-color: $neutral-100;
+          color: $neutral-700;
+        }
+
+        i {
+          font-size: 1.25rem;
+        }
+      }
+
+      span {
+        font-weight: 500;
+        color: $neutral-900;
+      }
+    }
+
+    .calendar {
+      .weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        margin-bottom: 0.5rem;
+
+        .weekday {
+          text-align: center;
+          font-size: 0.875rem;
+          color: $neutral-500;
+          font-weight: 500;
+          padding: 0.5rem;
+        }
+      }
+
+      .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.25rem;
+
+        .day {
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.875rem;
+          color: $neutral-700;
+          cursor: pointer;
+          border-radius: $radius;
+          transition: $transition;
+
+          &:hover:not(:empty) {
+            background-color: $neutral-100;
+          }
+
+          &.active {
+            background-color: $primary;
+            color: white;
+            font-weight: 500;
+
+            &:hover {
+              background-color: $primary-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .time {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      padding-top: 0;
+      padding-bottom: 1rem;
+      border-top: none;
+      border-bottom: 1px solid $neutral-200;
+      position: relative;
+
+      .timeInput {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.625rem 0.875rem;
+        border: 2px solid $neutral-200;
+        border-radius: $radius;
+        font-size: 0.875rem;
+        color: $neutral-900;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          border-color: $neutral-300;
+        }
+
+        i {
+          color: $neutral-500;
+          font-size: 1.25rem;
+        }
+      }
+
+      .timePicker {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        display: flex;
+        background-color: white;
+        border-radius: $radius;
+        box-shadow: $shadow-lg;
+        z-index: 1001;
+        animation: slideUp 0.2s ease;
+
+        .timeColumn {
+          flex: 1;
+          height: 200px;
+          overflow-y: auto;
+          border-right: 1px solid $neutral-200;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+
+          .timeOption {
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: $neutral-700;
+            cursor: pointer;
+            transition: $transition;
+
+            &:hover {
+              background-color: $neutral-100;
+            }
+
+            &.active {
+              color: $primary;
+              background-color: rgba($primary, 0.1);
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

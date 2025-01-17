@@ -1,0 +1,300 @@
+@import "../../../../../styles/variables.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .segments {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: $neutral-900;
+        font-weight: 600;
+      }
+    }
+
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      background-color: $neutral-50;
+      border: 2px dashed $neutral-200;
+      border-radius: $radius-lg;
+      color: $neutral-500;
+
+      i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.875rem;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      .segment {
+        background-color: white;
+        border: 2px solid $neutral-200;
+        border-radius: $radius;
+        padding: 1.5rem;
+        position: relative;
+        transition: $transition;
+
+        &:not(:last-child) {
+          border-bottom: 2px dashed $neutral-200;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background-color: $neutral-100;
+            border: 2px solid $neutral-200;
+            border-radius: 50%;
+            z-index: 1;
+          }
+        }
+
+        &:not(:first-child) {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          margin-top: -2px;
+        }
+
+        &:hover {
+          border-color: $primary;
+          box-shadow: $shadow;
+          z-index: 1;
+
+          &::after {
+            border-color: $primary;
+          }
+        }
+
+        .mainInfo {
+          display: flex;
+          align-items: flex-start;
+          gap: 2rem;
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px dashed $neutral-200;
+
+          .time {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .timePoint {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+
+              .hour {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: $neutral-900;
+              }
+
+              .date {
+                font-size: 0.875rem;
+                color: $neutral-500;
+              }
+            }
+
+            .duration {
+              font-size: 0.875rem;
+              color: $primary;
+              padding: 0.25rem 0.5rem;
+              background-color: rgba($primary, 0.1);
+              border-radius: $radius;
+              width: fit-content;
+            }
+          }
+
+          .route {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+
+            .city {
+              min-width: 80px;
+
+              .name {
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: $neutral-900;
+              }
+
+              .code {
+                font-size: 0.75rem;
+                color: $neutral-500;
+              }
+            }
+
+            .arrow {
+              color: $neutral-400;
+              position: relative;
+              flex: 1;
+              display: flex;
+              align-items: center;
+
+              &::before {
+                content: "";
+                flex: 1;
+                height: 2px;
+                background: repeating-linear-gradient(
+                  90deg,
+                  $neutral-300,
+                  $neutral-300 4px,
+                  transparent 4px,
+                  transparent 8px
+                );
+              }
+
+              i {
+                font-size: 1.25rem;
+                margin: 0 0.5rem;
+              }
+
+              .transit {
+                position: absolute;
+                top: -1.75rem;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+                font-size: 0.75rem;
+                color: $primary;
+                background-color: rgba($primary, 0.1);
+                padding: 0.25rem 0.5rem;
+                border-radius: $radius;
+                z-index: 2;
+              }
+            }
+          }
+
+          .transport {
+            flex: 1;
+            text-align: right;
+            padding-right: 3rem;
+
+            .number {
+              font-size: 1.125rem;
+              font-weight: 600;
+              color: $primary;
+              white-space: nowrap;
+            }
+          }
+        }
+
+        .subInfo {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.875rem;
+
+          .tags {
+            display: flex;
+            gap: 0.5rem;
+
+            .tag {
+              padding: 0.25rem 0.5rem;
+              border-radius: $radius;
+              background-color: $neutral-100;
+              color: $neutral-600;
+
+              &.hotel {
+                background-color: rgba($warning, 0.1);
+                color: $warning;
+              }
+
+              &.transit {
+                background-color: rgba($info, 0.1);
+                color: $info;
+              }
+            }
+          }
+
+          .price {
+            font-weight: 500;
+            color: $error;
+          }
+        }
+
+        .actions {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          display: flex;
+          gap: 0.5rem;
+          opacity: 0;
+          transition: $transition;
+          background-color: white;
+          padding: 0.25rem;
+          border-radius: $radius;
+          box-shadow: $shadow-sm;
+          z-index: 3;
+        }
+
+        &:hover .actions {
+          opacity: 1;
+        }
+      }
+    }
+
+    .summary {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem;
+      background-color: $neutral-50;
+      border-radius: $radius;
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        label {
+          font-size: 0.875rem;
+          color: $neutral-600;
+        }
+
+        span {
+          font-size: 1rem;
+          font-weight: 600;
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
